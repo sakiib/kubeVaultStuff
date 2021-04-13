@@ -1,0 +1,17 @@
+apiVersion: policy.kubevault.com/v1alpha1
+kind: VaultPolicyBinding
+metadata:
+  name: policy-reader-role
+  namespace: demo
+spec: 
+  vaultRef: 
+    name: vault
+  policies:
+  - ref: custom-policy
+  subjectRef:
+    appRole:
+      secretIdNumUses: 100
+      tokenTTL: 1000
+      tokenMaxTTL: 1000
+      tokenNumUses: 100
+      bindSecretID: true
